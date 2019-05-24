@@ -2,8 +2,6 @@
 
 namespace Calculator\Operation;
 
-use Calculator\OperationInterface;
-
 
 class Multiplication implements OperationInterface
 {
