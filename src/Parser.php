@@ -11,7 +11,6 @@ use Calculator\Operation\Substraction;
 class Parser
 {
     private $input;
-    private $operation;
 
     function __construct($input)
     {
@@ -20,15 +19,10 @@ class Parser
 
     public function parse()
     {
-        $division = new Division();
-        $multiplication = new Multiplication();
-        $substraction = new Substraction();
-        $addition = new Addition();
-
-        $this->calculateSubValue("/", $division);
-        $this->calculateSubValue("*", $multiplication);
-        $this->calculateSubValue("-", $substraction);
-        $this->calculateSubValue("+", $addition);
+        $this->calculateSubValue("/", new Division());
+        $this->calculateSubValue("*", new Multiplication());
+        $this->calculateSubValue("-", new Substraction());
+        $this->calculateSubValue("+", new Addition());
 
         return $this->input;
     }
@@ -40,8 +34,7 @@ class Parser
         while ($findingOperation) {
             $findingOperation = preg_match_all("/(\-)?[\d]{1,}(\.)?[\d]{0,}[\\" . $operator . "][\d]{1,}(\.)?[\d]{0,}/", $this->input, $matches);
 
-            $this->operation = $operation;
-            $this->input = $this->operation->useOperation($this->input, $matches);
+            $this->input = $operation->useOperation($this->input, $matches);
         }
     }
 
