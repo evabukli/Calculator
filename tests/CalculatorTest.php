@@ -6,19 +6,23 @@ use Calculator\Calculator;
 class CalculatorTest extends TestCase
 {
     private $calculator;
+    private $display;
+
+    public function setUp()
+    {
+        $this->display = new SimulatorDisplay();
+        $this->calculator = new Calculator($this->display);
+    }
 
     /**
      * @test
      */
     public function shouldDisplayOnePressedKey()
     {
-        $display = new SimulatorDisplay();
-        $this->calculator = new Calculator($display);
-
         $this->calculator->keyPressed("1");
 
         //should output 1 on display
-        $this->assertEquals("1", $display->setNumbers);
+        $this->assertEquals("1", $this->display->setNumbers);
     }
 
     /**
@@ -26,13 +30,10 @@ class CalculatorTest extends TestCase
      */
     public function shouldDisplayPressedKeys()
     {
-        $display = new SimulatorDisplay();
-        $this->calculator = new Calculator($display);
-
         $this->calculator->keyPressed("1");
         $this->calculator->keyPressed("2");
 
-        $this->assertEquals("12", $display->setNumbers);
+        $this->assertEquals("12", $this->display->setNumbers);
     }
 
     /**
@@ -40,13 +41,11 @@ class CalculatorTest extends TestCase
      */
     public function shouldCalculateOne()
     {
-        $display = new SimulatorDisplay();
-        $this->calculator = new Calculator($display);
         $this->calculator->keyPressed("1");
 
         $this->calculator->calculate();
 
-        $this->assertEquals("1", $display->setNumbers);
+        $this->assertEquals("1", $this->display->setNumbers);
     }
 
     /**
@@ -54,15 +53,13 @@ class CalculatorTest extends TestCase
      */
     public function shouldCalculateOnePlusTwo()
     {
-        $display = new SimulatorDisplay();
-        $this->calculator = new Calculator($display);
         $this->calculator->keyPressed("1");
         $this->calculator->keyPressed("+");
         $this->calculator->keyPressed("2");
 
         $this->calculator->calculate();
 
-        $this->assertEquals("3", $display->setNumbers);
+        $this->assertEquals("3", $this->display->setNumbers);
     }
 
     /**
@@ -70,8 +67,6 @@ class CalculatorTest extends TestCase
      */
     public function shouldCalculateOnePlusTwoPlusThree()
     {
-        $display = new SimulatorDisplay();
-        $this->calculator = new Calculator($display);
         $this->calculator->keyPressed("1");
         $this->calculator->keyPressed("+");
         $this->calculator->keyPressed("2");
@@ -80,7 +75,7 @@ class CalculatorTest extends TestCase
 
         $this->calculator->calculate();
 
-        $this->assertEquals("6", $display->setNumbers);
+        $this->assertEquals("6", $this->display->setNumbers);
     }
 
     /**
@@ -88,8 +83,6 @@ class CalculatorTest extends TestCase
      */
     public function shouldCalculateOnePlusTwoMultiplyThree()
     {
-        $display = new SimulatorDisplay();
-        $this->calculator = new Calculator($display);
         $this->calculator->keyPressed("1");
         $this->calculator->keyPressed("+");
         $this->calculator->keyPressed("2");
@@ -98,7 +91,7 @@ class CalculatorTest extends TestCase
 
         $this->calculator->calculate();
 
-        $this->assertEquals("7", $display->setNumbers);
+        $this->assertEquals("7", $this->display->setNumbers);
     }
 
     /**
@@ -106,8 +99,6 @@ class CalculatorTest extends TestCase
      */
     public function shouldCalculateOnePlusTwoMultiplyThreeMinusFour()
     {
-        $display = new SimulatorDisplay();
-        $this->calculator = new Calculator($display);
         $this->calculator->keyPressed("1");
         $this->calculator->keyPressed("+");
         $this->calculator->keyPressed("2");
@@ -118,7 +109,7 @@ class CalculatorTest extends TestCase
 
         $this->calculator->calculate();
 
-        $this->assertEquals("3", $display->setNumbers);
+        $this->assertEquals("3", $this->display->setNumbers);
     }
 
     /**
@@ -126,8 +117,6 @@ class CalculatorTest extends TestCase
      */
     public function shouldCalculateOnePlusTwoMultiplyThreePlusSixDividedByTwo()
     {
-        $display = new SimulatorDisplay();
-        $this->calculator = new Calculator($display);
         $this->calculator->keyPressed("1");
         $this->calculator->keyPressed("+");
         $this->calculator->keyPressed("2");
@@ -140,7 +129,7 @@ class CalculatorTest extends TestCase
 
         $this->calculator->calculate();
 
-        $this->assertEquals("10", $display->setNumbers);
+        $this->assertEquals("10", $this->display->setNumbers);
     }
 
     /**
@@ -148,13 +137,11 @@ class CalculatorTest extends TestCase
      */
     public function shouldCalculateLongerOperation()
     {
-        $display = new SimulatorDisplay();
-        $this->calculator = new Calculator($display);
         $this->calculator->keyPressed("10+4/2-1+100-10+10*2-1-1-1+5+2*2");
 
         $this->calculator->calculate();
 
-        $this->assertEquals("127", $display->setNumbers);
+        $this->assertEquals("127", $this->display->setNumbers);
     }
 
 }
