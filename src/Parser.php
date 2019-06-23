@@ -34,7 +34,7 @@ class Parser
         while ($findingOperation) {
             $findingOperation = preg_match_all("/(\-)?[\d]{1,}(\.)?[\d]{0,}[\\" . $operator . "][\d]{1,}(\.)?[\d]{0,}/", $this->input, $matches);
 
-            $this->input = $operation->useOperation($this->input, $matches);
+            $this->input = $operation->useOperation($this->input, $matches, $operator);
         }
     }
 
