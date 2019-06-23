@@ -26,7 +26,7 @@ class Calculator
         $this->display->showDisplay($this->input);
     }
 
-    private function calculateInRightOrder()
+    protected function calculateInRightOrder()
     {
         $parser = new Parser($this->input);
         $this->input = $parser->parse();

@@ -5,13 +5,9 @@ namespace Calculator\Operation;
 
 class Multiplication extends BinaryOperation
 {
-    public function selectOperation($match)
+    protected function selectOperation($match, $numbers)
     {
-        $numbers = explode("*", $match);
-
-        $subResult = (float)$numbers[0] * (float)$numbers[1];
-
-        return $subResult;
+        return (float)$numbers[0] * (float)$numbers[1];
     }
 
 }

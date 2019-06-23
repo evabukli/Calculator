@@ -12,7 +12,7 @@ class Parser
 {
     private $input;
 
-    function __construct($input)
+    public function __construct($input)
     {
         $this->input = $input;
     }
@@ -27,14 +27,14 @@ class Parser
         return $this->input;
     }
 
-    private function calculateSubValue($operator, $operation)
+    protected function calculateSubValue($operator, $operation)
     {
         $findingOperation = true;
 
         while ($findingOperation) {
             $findingOperation = preg_match_all("/(\-)?[\d]{1,}(\.)?[\d]{0,}[\\" . $operator . "][\d]{1,}(\.)?[\d]{0,}/", $this->input, $matches);
 
-            $this->input = $operation->useOperation($this->input, $matches);
+            $this->input = $operation->useOperation($this->input, $matches, $operator);
         }
     }
 
