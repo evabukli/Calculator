@@ -3,22 +3,19 @@
 namespace Calculator\Operation;
 
 
-class Substraction implements OperationInterface
+class Substraction extends BinaryOperation
 {
-    public function useOperation($input, $matches)
+    public function selectOperation($match)
     {
-        foreach ($matches[0] as $match) {
-            $numbers = explode("-", $match);
+        $numbers = explode("-", $match);
 
-            if (!isset($numbers[2])) {
-                $subResult = (float)$numbers[0] - (float)$numbers[1];
-            } else {
-                $subResult = (float)-$numbers[1] - (float)$numbers[2];
-            };
+        if (!isset($numbers[2])) {
+            $subResult = (float)$numbers[0] - (float)$numbers[1];
+        } else {
+            $subResult = (float)-$numbers[1] - (float)$numbers[2];
+        };
 
-            $input = str_replace($match, $subResult, $input);
-        }
-        return $input;
+        return $subResult;
     }
 
 }

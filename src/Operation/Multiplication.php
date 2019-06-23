@@ -3,18 +3,15 @@
 namespace Calculator\Operation;
 
 
-class Multiplication implements OperationInterface
+class Multiplication extends BinaryOperation
 {
-    public function useOperation($input, $matches)
+    public function selectOperation($match)
     {
-        foreach ($matches[0] as $match) {
-            $numbers = explode("*", $match);
+        $numbers = explode("*", $match);
 
-            $subResult = (float)$numbers[0] * (float)$numbers[1];
+        $subResult = (float)$numbers[0] * (float)$numbers[1];
 
-            $input = str_replace($match, $subResult, $input);
-        }
-        return $input;
+        return $subResult;
     }
 
 }
