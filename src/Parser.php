@@ -5,6 +5,7 @@ namespace Calculator;
 
 use Calculator\Operation\Addition;
 use Calculator\Operation\Division;
+use Calculator\Operation\Exponentiation;
 use Calculator\Operation\Multiplication;
 use Calculator\Operation\Substraction;
 
@@ -21,6 +22,7 @@ class Parser
     {
         $this->calculateSubValue("/", new Division());
         $this->calculateSubValue("*", new Multiplication());
+        $this->calculateSubValue("^", new Exponentiation());
         $this->calculateSubValue("-", new Substraction());
         $this->calculateSubValue("+", new Addition());
 

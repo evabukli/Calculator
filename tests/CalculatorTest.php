@@ -144,6 +144,18 @@ class CalculatorTest extends TestCase
         $this->assertEquals("127", $this->display->setNumbers);
     }
 
+    /**
+     * @test
+     */
+    public function shouldCalculateExponentiation()
+    {
+        $this->calculator->keyPressed("2^8-100+2*2");
+
+        $this->calculator->calculate();
+
+        $this->assertEquals("160", $this->display->setNumbers);
+    }
+
 }
 
 class SimulatorDisplay

@@ -1,13 +1,13 @@
 <?php
 
+
 namespace Calculator\Operation;
 
 
-class Division extends BinaryOperation
+class Exponentiation extends BinaryOperation
 {
     protected function selectOperation($numbers, $operator)
     {
-        return (float)$numbers[0] / (float)$numbers[1];
+        return pow((float)$numbers[0], (float)$numbers[1]);
     }
-
 }
