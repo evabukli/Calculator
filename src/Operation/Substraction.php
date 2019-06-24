@@ -5,7 +5,7 @@ namespace Calculator\Operation;
 
 class Substraction extends BinaryOperation
 {
-    protected function selectOperation($match, $numbers)
+    protected function selectOperation($match, $numbers, $operator)
     {
         if (!isset($numbers[2])) {
             return(float)$numbers[0] - (float)$numbers[1];
