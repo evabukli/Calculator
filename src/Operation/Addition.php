@@ -5,8 +5,8 @@ namespace Calculator\Operation;
 
 class Addition extends BinaryOperation
 {
-    protected function selectOperation($numbers, $operator)
+    protected function selectOperation($a, $b)
     {
-        return eval('return '.(float)$numbers[0].$operator.$numbers[1].';');
+        return $a + $b;
     }
 }

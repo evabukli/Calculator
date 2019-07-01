@@ -5,8 +5,8 @@ namespace Calculator\Operation;
 
 class Multiplication extends BinaryOperation
 {
-    protected function selectOperation($numbers, $operator)
+    protected function selectOperation($a, $b)
     {
-        return (float)$numbers[0] * (float)$numbers[1];
+        return $a* $b;
     }
 }

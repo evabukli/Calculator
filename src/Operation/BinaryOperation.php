@@ -11,13 +11,19 @@ abstract class BinaryOperation
 
             $numbers = explode($operator, $match);
 
-            $subResult = $this->selectOperation($numbers, $operator);
+            if (isset($numbers[2])) {
+                // hack for -3 - 5
+                $numbers[0] = -$numbers[1];
+                $numbers[1] = $numbers[2];
+            }
+
+            $subResult = $this->selectOperation((float)$numbers[0], (float)$numbers[1]);
 
             $input = str_replace($match, $subResult, $input);
         }
         return $input;
     }
 
-    abstract protected function selectOperation($numbers, $operator);
+    abstract protected function selectOperation($a, $b);
 
 }
