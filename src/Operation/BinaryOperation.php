@@ -5,11 +5,11 @@ namespace Calculator\Operation;
 
 abstract class BinaryOperation
 {
-    public function useOperation($input, $matches, $operator)
+    public function useOperation($input, $matches)
     {
         foreach ($matches[0] as $match) {
 
-            $numbers = explode($operator, $match);
+            $numbers = explode($this->getOperator(), $match);
 
             if (isset($numbers[2])) {
                 // hack for -3 - 5
@@ -23,6 +23,8 @@ abstract class BinaryOperation
         }
         return $input;
     }
+
+    abstract public function getOperator();
 
     abstract protected function selectOperation($a, $b);
 

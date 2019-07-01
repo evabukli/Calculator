@@ -20,23 +20,23 @@ class Parser
 
     public function parse()
     {
-        $this->calculateSubValue("/", new Division());
-        $this->calculateSubValue("*", new Multiplication());
-        $this->calculateSubValue("^", new Exponentiation());
-        $this->calculateSubValue("-", new Subtraction());
-        $this->calculateSubValue("+", new Addition());
+        $this->calculateSubValue(new Division());
+        $this->calculateSubValue(new Multiplication());
+        $this->calculateSubValue(new Exponentiation());
+        $this->calculateSubValue(new Subtraction());
+        $this->calculateSubValue(new Addition());
 
         return $this->input;
     }
 
-    protected function calculateSubValue($operator, $operation)
+    protected function calculateSubValue($operation)
     {
         $findingOperation = true;
 
         while ($findingOperation) {
-            $findingOperation = preg_match_all("/(\-)?[\d]{1,}(\.)?[\d]{0,}[\\" . $operator . "][\d]{1,}(\.)?[\d]{0,}/", $this->input, $matches);
+            $findingOperation = preg_match_all("/(\-)?[\d]{1,}(\.)?[\d]{0,}[\\" . $operation->getOperator() . "][\d]{1,}(\.)?[\d]{0,}/", $this->input, $matches);
 
-            $this->input = $operation->useOperation($this->input, $matches, $operator);
+            $this->input = $operation->useOperation($this->input, $matches);
         }
     }
 
