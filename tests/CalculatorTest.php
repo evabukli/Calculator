@@ -8,8 +8,8 @@ use Calculator\Calculator;
 
 class CalculatorTest extends TestCase
 {
-    private $calculator;
     private $display;
+    private $calculator;
 
     public function setUp()
     {
@@ -24,7 +24,7 @@ class CalculatorTest extends TestCase
     {
         $this->calculator->keyPressed("1");
 
-        $this->assertEquals("1", $this->display->setNumbers);
+        $this->assertHasBeenDisplayed("1");
     }
 
     /**
@@ -35,7 +35,7 @@ class CalculatorTest extends TestCase
         $this->calculator->keyPressed("1");
         $this->calculator->keyPressed("2");
 
-        $this->assertEquals("12", $this->display->setNumbers);
+        $this->assertHasBeenDisplayed("12");
     }
 
     /**
@@ -47,7 +47,7 @@ class CalculatorTest extends TestCase
 
         $this->calculator->calculate();
 
-        $this->assertEquals("1", $this->display->setNumbers);
+        $this->assertHasBeenDisplayed("1");
     }
 
     /**
@@ -61,7 +61,7 @@ class CalculatorTest extends TestCase
 
         $this->calculator->calculate();
 
-        $this->assertEquals("3", $this->display->setNumbers);
+        $this->assertHasBeenDisplayed("3");
     }
 
     /**
@@ -77,7 +77,7 @@ class CalculatorTest extends TestCase
 
         $this->calculator->calculate();
 
-        $this->assertEquals("6", $this->display->setNumbers);
+        $this->assertHasBeenDisplayed("6");
     }
 
     /**
@@ -93,7 +93,7 @@ class CalculatorTest extends TestCase
 
         $this->calculator->calculate();
 
-        $this->assertEquals("7", $this->display->setNumbers);
+        $this->assertHasBeenDisplayed("7");
     }
 
     /**
@@ -111,7 +111,7 @@ class CalculatorTest extends TestCase
 
         $this->calculator->calculate();
 
-        $this->assertEquals("3", $this->display->setNumbers);
+        $this->assertHasBeenDisplayed("3");
     }
 
     /**
@@ -131,7 +131,7 @@ class CalculatorTest extends TestCase
 
         $this->calculator->calculate();
 
-        $this->assertEquals("10", $this->display->setNumbers);
+        $this->assertHasBeenDisplayed("10");
     }
 
     /**
@@ -143,7 +143,7 @@ class CalculatorTest extends TestCase
 
         $this->calculator->calculate();
 
-        $this->assertEquals("127", $this->display->setNumbers);
+        $this->assertHasBeenDisplayed("127");
     }
 
     /**
@@ -155,9 +155,13 @@ class CalculatorTest extends TestCase
 
         $this->calculator->calculate();
 
-        $this->assertEquals("160", $this->display->setNumbers);
+        $this->assertHasBeenDisplayed("160");
     }
 
+    private function assertHasBeenDisplayed($numbers)
+    {
+        $this->assertEquals($numbers, $this->display->setNumbers);
+    }
 }
 
 class SimulatorDisplay
