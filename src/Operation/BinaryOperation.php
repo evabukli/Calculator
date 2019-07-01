@@ -17,7 +17,9 @@ abstract class BinaryOperation
                 $numbers[1] = $numbers[2];
             }
 
-            $subResult = $this->selectOperation((float)$numbers[0], (float)$numbers[1]);
+            $a = (float)$numbers[0];
+            $b = (float)$numbers[1];
+            $subResult = $this->selectOperation($a, $b);
 
             $input = str_replace($match, $subResult, $input);
         }
