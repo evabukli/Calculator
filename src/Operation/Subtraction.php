@@ -3,7 +3,7 @@
 namespace Calculator\Operation;
 
 
-class Substraction extends BinaryOperation
+class Subtraction extends BinaryOperation
 {
     protected function selectOperation($numbers, $operator)
     {

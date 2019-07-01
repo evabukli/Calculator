@@ -7,7 +7,7 @@ use Calculator\Operation\Addition;
 use Calculator\Operation\Division;
 use Calculator\Operation\Exponentiation;
 use Calculator\Operation\Multiplication;
-use Calculator\Operation\Substraction;
+use Calculator\Operation\Subtraction;
 
 class Parser
 {
@@ -23,7 +23,7 @@ class Parser
         $this->calculateSubValue("/", new Division());
         $this->calculateSubValue("*", new Multiplication());
         $this->calculateSubValue("^", new Exponentiation());
-        $this->calculateSubValue("-", new Substraction());
+        $this->calculateSubValue("-", new Subtraction());
         $this->calculateSubValue("+", new Addition());
 
         return $this->input;
