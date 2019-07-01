@@ -3,11 +3,7 @@
 namespace Calculator;
 
 
-use Calculator\Operation\Addition;
-use Calculator\Operation\Division;
-use Calculator\Operation\Exponentiation;
-use Calculator\Operation\Multiplication;
-use Calculator\Operation\Subtraction;
+use Calculator\Operation\Operations;
 
 class Parser
 {
@@ -20,11 +16,10 @@ class Parser
 
     public function parse()
     {
-        $this->calculateSubValue(new Division());
-        $this->calculateSubValue(new Multiplication());
-        $this->calculateSubValue(new Exponentiation());
-        $this->calculateSubValue(new Subtraction());
-        $this->calculateSubValue(new Addition());
+        $operations = new Operations();
+        foreach ($operations->getOperations() as $operation) {
+            $this->calculateSubValue($operation);
+        }
 
         return $this->input;
     }
