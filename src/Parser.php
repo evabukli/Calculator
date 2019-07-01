@@ -29,7 +29,7 @@ class Parser
         $findingOperation = true;
 
         while ($findingOperation) {
-            $findingOperation = preg_match_all("/(\-)?[\d]{1,}(\.)?[\d]{0,}[\\" . $operation->getOperator() . "][\d]{1,}(\.)?[\d]{0,}/", $this->input, $matches);
+            $findingOperation = preg_match_all("/-?\d+\.?\d*[\\" . $operation->getOperator() . "]\d+\.?\d*/", $this->input, $matches);
 
             $this->input = $operation->useOperation($this->input, $matches);
         }
