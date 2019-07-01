@@ -13,5 +13,4 @@ class Substraction extends BinaryOperation
             return (float)-$numbers[1] - (float)$numbers[2];
         }
     }
-
 }

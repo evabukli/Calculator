@@ -9,5 +9,4 @@ class Addition extends BinaryOperation
     {
         return eval('return '.(float)$numbers[0].$operator.$numbers[1].';');
     }
-
 }

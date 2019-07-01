@@ -1,5 +1,8 @@
 <?php
 
+namespace Tests;
+
+
 use PHPUnit\Framework\TestCase;
 use Calculator\Calculator;
 
@@ -21,7 +24,6 @@ class CalculatorTest extends TestCase
     {
         $this->calculator->keyPressed("1");
 
-        //should output 1 on display
         $this->assertEquals("1", $this->display->setNumbers);
     }
 

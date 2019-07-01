@@ -9,5 +9,4 @@ class Multiplication extends BinaryOperation
     {
         return (float)$numbers[0] * (float)$numbers[1];
     }
-
 }
