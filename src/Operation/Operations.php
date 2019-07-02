@@ -20,7 +20,8 @@ class Operations
     public function asPattern()
     {
         $pattern = "";
-        foreach ($this->getOperations() as $operation) {
+        foreach ($this->getOperations() as $operation)
+        {
             if (strlen($pattern) > 0)
             {
                 $pattern .= "|";

@@ -28,6 +28,6 @@ abstract class BinaryOperation
 
     abstract public function getOperator();
 
-    abstract protected function selectOperation($a, $b);
+    abstract public function selectOperation($a, $b);
 
 }

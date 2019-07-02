@@ -9,7 +9,7 @@ class Multiplication extends BinaryOperation
         return "*";
     }
 
-    protected function selectOperation($a, $b)
+    public function selectOperation($a, $b)
     {
         return $a* $b;
     }
