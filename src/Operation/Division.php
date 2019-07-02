@@ -9,7 +9,7 @@ class Division extends BinaryOperation
         return "/";
     }
 
-    public function selectOperation($a, $b)
+    protected function selectOperation($a, $b)
     {
         return $a / $b;
     }

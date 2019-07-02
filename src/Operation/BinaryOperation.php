@@ -5,29 +5,22 @@ namespace Calculator\Operation;
 
 abstract class BinaryOperation
 {
-    public function useOperation($input, $matches)
+    public function useOperation($tokens, $findingOperation)
     {
-        foreach ($matches[0] as $match) {
+        $before = array_slice($tokens, 0, $findingOperation - 1);
+        $numbers = array_slice($tokens, $findingOperation - 1, 3);
+        $after = array_slice($tokens, $findingOperation -1 + 3);
 
-            $numbers = explode($this->getOperator(), $match);
+        $a = (float)$numbers[0];
+        $b = (float)$numbers[2];
 
-            if (isset($numbers[2])) {
-                // hack for -3 - 5
-                $numbers[0] = -$numbers[1];
-                $numbers[1] = $numbers[2];
-            }
+        $subResult = $this->selectOperation($a, $b);
 
-            $a = (float)$numbers[0];
-            $b = (float)$numbers[1];
-            $subResult = $this->selectOperation($a, $b);
-
-            $input = str_replace($match, $subResult, $input);
-        }
-        return $input;
+        return array_merge($before, [$subResult], $after);
     }
 
     abstract public function getOperator();
 
-    abstract public function selectOperation($a, $b);
+    abstract protected function selectOperation($a, $b);
 
 }

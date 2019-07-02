@@ -9,7 +9,7 @@ class Exponentiation extends BinaryOperation
         return "^";
     }
 
-    public function selectOperation($a, $b)
+    protected function selectOperation($a, $b)
     {
         return pow($a, $b);
     }
