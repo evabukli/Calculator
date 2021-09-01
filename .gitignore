@@ -3,3 +3,6 @@
 composer.phar
 *.bak
 *.lnk
+
+constraint.txt
+with_*.txt
